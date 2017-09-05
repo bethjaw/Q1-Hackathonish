@@ -45,60 +45,60 @@ fetch(searchURL)
       })
   })
 
-var locationURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + city + ',+' + state + '&key=AIzaSyBrmuay_QCPlGM7HYhsTCq5mERd6ammyUE'
-
-  fetch(locationURL)
-    .then(function(response){
-      return response.json()
-        .then(function(locationData){
-          // console.log(locationData)
-
-          var locationLocalLat =locationData.results[0].geometry.location.lat
-          var locationLocalLng =locationData.results[0].geometry.location.lng
-
-
-          var weatherURL = 'https://api.darksky.net/forecast/00a355506958506ea0d7685d41663ed7/' + locationLocalLat + ',' + locationLocalLng
-          // console.log(weatherURL)
-
-
-          fetch(weatherURL)
-          .then(function(response) {
-            return response.json()
-              .then(function(weatherData) {
-                console.log(weatherData)
-
-              var weatherContent = document.getElementsByClassName('weather')[0]
-
-              // var precipProb = weatherData.currently.precipProbability
-              // var temp = weatherData.currently.temperature
-              //   weatherContent.append('Current Temperature', + temp, 'Chance of Precipitation', precipProb)
-
-                for(var i = 0; i <weatherData.daily.data.length; i++){
-                  var dailyDiv = document.createElement('div')
-                  var tempHigh = document.createElement('p')
-                  var tempLow = document.createElement('p')
-                  var precip = document.createElement('p')
-                  var summary = document.createElement('p')
-
-                  tempHigh.innerText = weatherData.daily.data[i].apparentTemperatureHigh
-
-                  tempLow.innerText = weatherData.daily.data[i].apparentTemperatureLow
-
-                  precip.innerText = weatherData.daily.data[i].precipProbability
-
-                  summary.innerText = weatherData.daily.data[i].summary
-
-                  console.log(weatherData.daily.data[i])
-                  dailyDiv.append('High', tempHigh, 'low', tempLow, 'change of precipition', precip, summary)
-                  weatherContent.append(dailyDiv)
-
-                  dailyDiv.className = 'weatherDiv'
-                }
-              })
-          })
-
-
-        })
-    })
+// var locationURL = 'https://maps.googleapis.com/maps/api/geocode/json?address=' + city + ',+' + state + '&key=AIzaSyBrmuay_QCPlGM7HYhsTCq5mERd6ammyUE'
+//
+//   fetch(locationURL)
+//     .then(function(response){
+//       return response.json()
+//         .then(function(locationData){
+//           // console.log(locationData)
+//
+//           var locationLocalLat =locationData.results[0].geometry.location.lat
+//           var locationLocalLng =locationData.results[0].geometry.location.lng
+//
+//
+//           var weatherURL = 'https://api.darksky.net/forecast/00a355506958506ea0d7685d41663ed7/' + locationLocalLat + ',' + locationLocalLng
+//           // console.log(weatherURL)
+//
+//
+//           fetch(weatherURL)
+//           .then(function(response) {
+//             return response.json()
+//               .then(function(weatherData) {
+//                 console.log(weatherData)
+//
+//               var weatherContent = document.getElementsByClassName('weather')[0]
+//
+//               // var precipProb = weatherData.currently.precipProbability
+//               // var temp = weatherData.currently.temperature
+//               //   weatherContent.append('Current Temperature', + temp, 'Chance of Precipitation', precipProb)
+//
+//                 for(var i = 0; i <weatherData.daily.data.length; i++){
+//                   var dailyDiv = document.createElement('div')
+//                   var tempHigh = document.createElement('p')
+//                   var tempLow = document.createElement('p')
+//                   var precip = document.createElement('p')
+//                   var summary = document.createElement('p')
+//
+//                   tempHigh.innerText = weatherData.daily.data[i].apparentTemperatureHigh
+//
+//                   tempLow.innerText = weatherData.daily.data[i].apparentTemperatureLow
+//
+//                   precip.innerText = weatherData.daily.data[i].precipProbability
+//
+//                   summary.innerText = weatherData.daily.data[i].summary
+//
+//                   console.log(weatherData.daily.data[i])
+//                   dailyDiv.append('High', tempHigh, 'low', tempLow, 'change of precipition', precip, summary)
+//                   weatherContent.append(dailyDiv)
+//
+//                   dailyDiv.className = 'weatherDiv'
+//                 }
+//               })
+//           })
+//
+//
+//         })
+//     })
 
 })
